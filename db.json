@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Gears of War",
+      "price": "80"
+    },
+    {
+      "id": 2,
+      "name": "League of Legends",
+      "price": "10"
+    },
+    {
+      "name": "Fall Guys: Ultimate Knockout",
+      "price": "20",
+      "id": 3
+    },
+    {
+      "name": "Phantasmophobia",
+      "price": "30",
+      "id": 4
+    },
+    {
+      "name": "Genshin Impact",
+      "price": "15",
+      "id": 5
+    }
+  ]
+}

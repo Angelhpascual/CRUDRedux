@@ -1,0 +1,29 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Fall Guys",
+        "price": "30"
+      },
+      {
+        "id": 2,
+        "name": "Phantasmophobia",
+        "price": "20"
+      },
+      {
+        "name": "Counter-Strike",
+        "price": "40",
+        "id": 3
+      },
+      {
+        "name": "Gears of War",
+        "price": "80",
+        "id": 4
+      },
+      {
+        "name": "League of Legends",
+        "price": "10",
+        "id": 5
+      }
+    ]
+  }
