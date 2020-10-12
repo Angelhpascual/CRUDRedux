@@ -1,11 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Gears of War",
-      "price": "80"
-    },
-    {
       "id": 2,
       "name": "League of Legends",
       "price": "10"
@@ -21,9 +16,9 @@
       "id": 4
     },
     {
-      "name": "Genshin Impact",
-      "price": "15",
-      "id": 5
+      "name": "Monkey Island 2 ",
+      "price": 20,
+      "id": 8
     }
   ]
 }

@@ -1,23 +1,39 @@
 import React from 'react';
+import { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 //Redux Actions
 import  {createNewProductAction} from '../actions/productActions'
 
-const NewProducts = () => {
+const NewProducts = ({history}) => {
+
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState(0)
 
 
     const dispatch = useDispatch()
 
-    const addProduct = () => dispatch( createNewProductAction() )
+    const loadingState = useSelector(state => state.products.loading)
+    const errorState = useSelector(state => state.products.error )
+
+    const addProduct = (product) => dispatch( createNewProductAction(product) )
 
     const submitNewProduct = e => {
         e.preventDefault()
         
         //validate form
 
+        if(name.trim() === '' || price <= 0 === ''){
+            return;
+        }
+
         //create a new product
 
-        addProduct();
+        addProduct({
+            name, 
+            price
+        });
+
+        history.push('/')
     }
 
 
@@ -35,6 +51,8 @@ const NewProducts = () => {
                                 className="form-control"
                                 placeholder="Type the product name..."
                                 name="name"
+                                value={name}
+                                onChange={e => setName(e.target.value)}
                             />
                             </div>
                             <div className="form-group">
@@ -43,12 +61,17 @@ const NewProducts = () => {
                                 className="form-control"
                                 placeholder="Type the product price..."
                                 name="price"
+                                value={price}
+                                onChange={e => setPrice(Number(e.target.value))}
                             />
                             </div>
                             <button type="submit"
                                 className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
                             >add product</button>
                         </form>
+
+                        {loadingState ? <p>Loading Products</p> : null}
+                        {errorState ? <p className="alert alert-danger p2 mt-4 text-center">Error Happened</p> : null }
                     </div>
                 </div>
             </div>
