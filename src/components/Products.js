@@ -13,6 +13,7 @@ const Products = () => {
     useEffect(() => {
         const getProductsState = () => dispatch(getProductsAction())
         getProductsState()
+        //eslint-disable-next-line
     }, [])
 
     const products = useSelector(state => state.products.products)

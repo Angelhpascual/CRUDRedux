@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 //Redux Actions
 import  {createNewProductAction} from '../actions/productActions'
+import { showAlert, hideAlertAction } from '../actions/alertActions'
 
 const NewProducts = ({history}) => {
 
@@ -15,6 +16,10 @@ const NewProducts = ({history}) => {
     const loadingState = useSelector(state => state.products.loading)
     const errorState = useSelector(state => state.products.error )
 
+    const alertState = useSelector(state => state.alert.alert)
+
+    
+
     const addProduct = (product) => dispatch( createNewProductAction(product) )
 
     const submitNewProduct = e => {
@@ -22,9 +27,19 @@ const NewProducts = ({history}) => {
         
         //validate form
 
-        if(name.trim() === '' || price <= 0 === ''){
+        if(name.trim() === '' || price <= 0 ){
+            
+            const alert = {
+                msg: 'Both fields are required',
+                classes: 'alert alert-danger text-center text-uppercase p3'
+            }
+            dispatch(showAlert(alert))
+            
             return;
         }
+
+        //If there is no errors
+        dispatch(hideAlertAction())
 
         //create a new product
 
@@ -44,6 +59,10 @@ const NewProducts = ({history}) => {
                 <div className="card">
                     <div className="card-body">
                         <h2 className="text-center mb-4 font-weight-bold">ADD A NEW PRODUCT</h2>
+
+                        { alertState ? <p className={alertState.classes}>{alertState.msg}</p> : null }
+
+
                         <form onSubmit={submitNewProduct}>
                             <div className="form-group">
                             <label>Product Name</label>
